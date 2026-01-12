@@ -49,4 +49,10 @@ abstract contract MyERC20{
          emit Transfer(_from,_to , _amount);
     }
 
+    function _mint(address _to , uint256 _amount) internal{
+        totalSupply += _amount;
+        balanceOf[_to] = _amount;
+        emit Transfer(address(0) , _to , _amount);
+    }
+
 }
