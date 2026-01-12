@@ -54,5 +54,9 @@ abstract contract MyERC20{
         balanceOf[_to] = _amount;
         emit Transfer(address(0) , _to , _amount);
     }
-
+    function _burn(address _from , uint256 _amount) internal{
+         balanceOf[_from]-=_amount;
+        totalSupply-=_amount;       
+        emit Transfer(_from , address(0) , _amount);
+    }
 }
