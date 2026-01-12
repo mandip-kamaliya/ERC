@@ -12,19 +12,28 @@ abstract contract MyERC20{
     mapping (address => mapping(address=>uint256)) public allowance;
 
     event Transfer(address indexed _to , uint256 _amount);
+    event Aproval(address indexed owner,address indexed recepient,uint256 _amount); 
 
     constructor(string memory n,string memory s,uint8 d){
         name=n;
         symbol=s;
         decimals=d;
     }
+
+    function approve(address recepient,uint256 _amount) external returns(bool){
+        require(_amount <= balanceOf[msg.sender],"Not Enough Balance to Approve");
+        allowance[msg.sender][_recepient]=_amount;
+        emit Aproval(_recepient,_amount);
+        return true;
+    }
+
+
     function _transfer(address _to , uint256 _amount) internal {
          require(_to != address(0),"receiver address is empty");
          require(_amount <= balanceOf[msg.sender],"not enough balance");
          balanceOf[msg.sender]-=_amount;
          balanceOf[_to] += _amount;
          emit Transfer(_to , _amount);
-
     }
 
 }
