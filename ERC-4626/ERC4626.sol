@@ -60,3 +60,13 @@ abstract contract MyERC20{
         emit Transfer(_from , address(0) , _amount);
     }
 }
+
+library Math {
+    function mulDivDown(uint256 a, uint256 b, uint256 d) internal pure returns (uint256) {
+        return a * b / d;
+    }
+
+    function mulDivUp(uint256 a, uint256 b, uint256 d) internal pure returns (uint256) {
+        return (a * b + d - 1) / d;
+    }
+}
