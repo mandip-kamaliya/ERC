@@ -27,6 +27,10 @@ abstract contract MyERC20{
         return true;
     }
 
+    function transfer(address _recepient , uint256 _amount) external returns(bool){
+        _transfer(_recepient , _amount);
+        return true;
+    }
 
     function _transfer(address _to , uint256 _amount) internal {
          require(_to != address(0),"receiver address is empty");
