@@ -70,3 +70,12 @@ library Math {
         return (a * b + d - 1) / d;
     }
 }
+
+abstract contract ERC4626 is MyERC20{
+    using math for uint256;
+    IERC20 public immutable asset;
+
+    event Deposit(address indexed caller, address indexed owner, uint256 assets, uint256 shares);
+    event Withdraw(address indexed caller, address indexed receiver, address indexed owner, uint256 assets, uint256 shares);
+
+}
