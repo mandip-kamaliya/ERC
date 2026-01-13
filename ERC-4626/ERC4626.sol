@@ -78,4 +78,11 @@ abstract contract ERC4626 is MyERC20{
     event Deposit(address indexed caller, address indexed owner, uint256 assets, uint256 shares);
     event Withdraw(address indexed caller, address indexed receiver, address indexed owner, uint256 assets, uint256 shares);
 
+     constructor(IERC20 a, string memory n, string memory s)
+        MyERC20(n, s, a.decimals()) {
+        asset = a;
+    }
+
+     function totalAssets() public view virtual returns (uint256);
+
 }
