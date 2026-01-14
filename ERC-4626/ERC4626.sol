@@ -95,4 +95,9 @@ abstract contract ERC4626 is MyERC20{
         return supply == 0 ? shares : shares.mulDivDown(totalAssets(), supply);
     }
 
+      function convertToAssets(uint256 shares) public view returns (uint256) {
+        uint256 supply = totalSupply;
+        return supply == 0 ? shares : shares.mulDivDown(totalAssets(), supply);
+    }
+
 }
