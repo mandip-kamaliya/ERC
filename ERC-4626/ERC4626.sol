@@ -131,6 +131,16 @@ abstract contract ERC4626 is MyERC20{
         afterDeposit(assets,shares);
     }
 
+    function withdraw(uint assets , address receiver) external returns(uint){
+        uint shares = previewWithdraw(assets);
+        require(shares != 0 , "ZERO_SHARES");
+        beforeWithdraw(assets,shares);
+        _burn(msg.sender , shares);
+        asset.transfer(receiver , assets);
+        emit Withdraw(msg.sender, receiver, msg.sender, assets, shares);
+        return shares;
+    }
+
 
     //hooks
     function beforeWithdraw(uint256 assets , uint256 shares) internal virtual{}
