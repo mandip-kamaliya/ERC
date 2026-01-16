@@ -121,4 +121,6 @@ abstract contract ERC4626 is MyERC20{
         emit Deposit(msg.sender, receiver, assets, shares);
     }
 
+    function beforeWithdraw(uint256 assets , uint256 shares) internal virtual{}
+    function afterDeposit(uint256 assets , uint256 shares) intrnal virtual{}
 }
