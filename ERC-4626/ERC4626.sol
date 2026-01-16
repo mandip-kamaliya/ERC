@@ -153,6 +153,16 @@ abstract contract ERC4626 is MyERC20{
         
         }
 
+        //limits
+
+    function maxWithdraw(address owner) public view virtual returns (uint256) {
+        return convertToAssets(balanceOf[owner]);
+    }
+
+    function maxRedeem(address owner) public view virtual returns (uint256) {
+        return balanceOf[owner];
+    }
+
 
     //hooks
     function beforeWithdraw(uint256 assets , uint256 shares) internal virtual{}
