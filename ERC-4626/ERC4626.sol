@@ -113,9 +113,12 @@ abstract contract ERC4626 is MyERC20{
         return convertToAssets(shares);
     }
 
-    function deposit(uint assets , address receiver) public returns(share){
-      function previewWithdraw(uint256 assets) public view returns (uint256) {
-        require(share = )
+    function deposit(uint assets , address receiver) public returns(shares){
+      
+        require((shares = previewDeposit(assets)) != 0, ZERO_SHARES);
+        assets.transferFrom(msg.sender,address(this),assets);
+        _mint(receiver,shares);
+        emit Deposit(msg.sender, receiver, assets, shares);
     }
 
 }
